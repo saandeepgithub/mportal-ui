@@ -4,11 +4,6 @@ import {Card} from "react-bootstrap";
 
 class Wallet extends React.Component {
 
-    constructor(props) {
-        super(props)
-    }
-
-
     props = {
         balance: 0,
         image_source: ''
