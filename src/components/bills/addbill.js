@@ -16,7 +16,6 @@ class AddBill extends React.Component {
     genBillId = (event) => {
         alert("1");
         axios.get("http://localhost:8080/bills/allowed").then(res =>{
-            alert('Hello');
             this.setState({billId: res.data});
         })
         alert("value:"+this.state.billId)
