@@ -1,22 +1,21 @@
 import React from "react";
 import BillHomePage from "./billhomepage";
-import Card from "react-bootstrap/Card";
+import Wallet from "../wallets/wallet";
+import walletLogo from '../../paytm.png';
 
-class Wallets extends React.Component{
+class Balance extends React.Component {
 
     render() {
         return <div>
             <BillHomePage/>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="./paytm.png" />
-                <Card.Body>
-                    <Card.Text>
-                       123.0
-                    </Card.Text>
-                </Card.Body>
-            </Card>
+            <Wallet balance='1234' image_source={walletLogo}/>
+            <Wallet balance='1234' image_source={walletLogo}/>
+            <Wallet balance='1234' image_source={walletLogo}/>
+            <Wallet balance='1234' image_source={walletLogo}/>
+            <Wallet balance='1234' image_source={walletLogo}/>
+
         </div>
     }
 }
 
-export default Wallets
+export default Balance

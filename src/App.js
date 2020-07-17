@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Menu from "./components/Menu";
+import AddBill from "./components/bills/addbill";
+import EditBill from './components/bills/editbill'
+import Balance from './components/bills/balance'
+import Activity from './components/activity/activitypage'
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <Route path='/' component={Menu} exact={true}/>
+            <Route path='/activites' component={Activity} exact={true}/>
+            <Route path='/bills' component={AddBill} exact={true}/>
+            <Route path='/bills/add' component={AddBill} exact={true}/>
+            <Route path='/bills/view' component={EditBill} exact={true}/>
+            <Route path='/bills/balance' component={Balance} exact={true}/>
+        </Router>
+    );
 }
 
 export default App;
