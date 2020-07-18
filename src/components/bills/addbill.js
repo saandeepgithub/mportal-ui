@@ -6,19 +6,28 @@ import axios from "axios";
 
 class AddBill extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            billId: ''
+       state = {
+            billName: '',
+            paymentMode: '',
+            billAmount: 0,
+            cashBack: 0
         }
-    }
+
+        fetchValues =(event)=>{
+           const billAttr=event.target.name;
+           this.setState({[billAttr]: event.target.value});
+        }
 
     genBillId = (event) => {
-        alert("1");
-        axios.get("http://localhost:8080/bills/allowed").then(res =>{
-            this.setState({billId: res.data});
+        const bill = {
+            billName: this.state.billName,
+            billPaymentMode: this.state.paymentMode,
+            billAmount: this.state.billAmount,
+            cashBack: this.state.cashBack
+        }
+        axios.put("http://localhost:3000/bills/add",{bill}).then(response =>{
+            alert("Bill ID ::"+response.response);
         })
-        alert("value:"+this.state.billId)
     }
 
     render() {
@@ -27,19 +36,17 @@ class AddBill extends React.Component {
             <div className='col-sm-10'>
                 <Form.Group>
                     <Form.Label>Bill Name</Form.Label>
-                    <Form.Control as="select" onChange={this.genBillId}>
+                    <Form.Control as="select" onChange={this.fetchValues} name="billName">
+                        <option value='#'>Select Bill</option>
                         <option value='act'>ACT</option>
                         <option value='water'>WATER</option>
                         <option value='dth'>DTH</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Bill Id</Form.Label>
-                    <Form.Control placeholder="Auto Generated Bill Id" disabled value={this.state.billId}/>
-                </Form.Group>
-                <Form.Group>
                     <Form.Label>Payment Mode</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control as="select" name="paymentMode" onChange={this.fetchValues}>
+                        <option value='#'>Select Payment Mode</option>
                         <option value='ap'>Amazon Pay</option>
                         <option value='ch'>Cash</option>
                         <option value='cb'>Cash Back</option>
@@ -52,13 +59,13 @@ class AddBill extends React.Component {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Bill Amount</Form.Label>
-                    <Form.Control placeholder="bill amount"/>
+                    <Form.Control placeholder="bill amount" name="billAmount" onChange={this.fetchValues}/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Cashback</Form.Label>
-                    <Form.Control placeholder="cash back"/>
+                    <Form.Control placeholder="cash back" name="cashBack" onChange={this.fetchValues}/>
                 </Form.Group>
-                <Button type='button'>Add Bill</Button>
+                <Button type='button' onClick={this.genBillId}>Add Bill</Button>
             </div>
         </div>
     }
