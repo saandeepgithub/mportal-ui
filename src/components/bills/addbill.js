@@ -19,14 +19,13 @@ class AddBill extends React.Component {
         }
 
     genBillId = (event) => {
-        const bill = {
+        axios.put("http://localhost:3000/bills/add",{
             billName: this.state.billName,
             billPaymentMode: this.state.paymentMode,
             billAmount: this.state.billAmount,
             cashBack: this.state.cashBack
-        }
-        axios.put("http://localhost:3000/bills/add",{bill}).then(response =>{
-            alert("Bill ID ::"+response.response);
+        }).then(res =>{
+            alert("Bill ID ::"+res.data.response);
         })
     }
 
@@ -38,28 +37,40 @@ class AddBill extends React.Component {
                     <Form.Label>Bill Name</Form.Label>
                     <Form.Control as="select" onChange={this.fetchValues} name="billName">
                         <option value='#'>Select Bill</option>
-                        <option value='act'>ACT</option>
-                        <option value='water'>WATER</option>
-                        <option value='dth'>DTH</option>
+                        <option value='ACT'>ACT_FIBER</option>
+                        <option value='AMZ'>AMAZON</option>
+                        <option value='DTH'>DTH</option>
+                        <option value='GRO'>GROCESSORIES</option>
+                        <option value='MED'>MEDICINES</option>
+                        <option value='MR'>MOBILE_RECHARGE</option>
+                        <option value='NV'>NON-VEG</option>
+                        <option value='PTL'>PETROL</option>
+                        <option value='CB1'>POWER_BILL_FLOOR-1</option>
+                        <option value='CB21'>POWER_BILL_FLOOR-2-1</option>
+                        <option value='CB22'>POWER_BILL_FLOOR-2-2</option>
+                        <option value='CB3'>POWER_BILL_FLOOR-3</option>
+                        <option value='VEG'>VEGETABLES</option>
+                        <option value='WB'>WATER-BILL</option>
+                        <option value='ZZZ'>OTHERS</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Payment Mode</Form.Label>
                     <Form.Control as="select" name="paymentMode" onChange={this.fetchValues}>
                         <option value='#'>Select Payment Mode</option>
-                        <option value='ap'>Amazon Pay</option>
-                        <option value='ch'>Cash</option>
-                        <option value='cb'>Cash Back</option>
-                        <option value='db'>Credit Card</option>
-                        <option value='cc'>Debit Card</option>
-                        <option value='gp'>Google Pay</option>
-                        <option value='pt'>PayTM</option>
-                        <option value='pp'>Phone Pay</option>
+                        <option value='AP'>Amazon Pay</option>
+                        <option value='CH'>Cash</option>
+                        <option value='CB'>Cash Back</option>
+                        <option value='CC'>Credit Card</option>
+                        <option value='DC'>Debit Card</option>
+                        <option value='GP'>Google Pay</option>
+                        <option value='PT'>PayTM</option>
+                        <option value='PP'>Phone Pay</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Bill Amount</Form.Label>
-                    <Form.Control placeholder="bill amount" name="billAmount" onChange={this.fetchValues}/>
+                    <Form.Control placeholder="bill amount" name="billAmount" onChange={this.fetchValues} type="number"/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Cashback</Form.Label>
