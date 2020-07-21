@@ -1,37 +1,63 @@
 import React from "react";
+import ReactDom from "react-dom";
 import BillHomePage from "./billhomepage";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
+import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 
 class AddBill extends React.Component {
 
-       state = {
-            billName: '',
-            paymentMode: '',
-            billAmount: 0,
-            cashBack: 0
-        }
+    state = {
+        billName: '',
+        paymentMode: '',
+        billAmount: 0,
+        cashBack: 0,
+        message: ''
+    }
 
-        fetchValues =(event)=>{
-           const billAttr=event.target.name;
-           this.setState({[billAttr]: event.target.value});
-        }
+    fetchValues = (event) => {
+        const billAttr = event.target.name;
+        this.setState({[billAttr]: event.target.value});
+    }
 
-    genBillId = (event) => {
-        axios.put("http://localhost:3000/bills/add",{
+    displaySpinner = (event, hiddenStatus) => {
+        return (
+            <Spinner  animation="border" variant="primary" hidden={hiddenStatus}/>
+        );
+    }
+
+    displayResponseAsAlert = (event, alertShow, alertMessage) => {
+        return (
+            <Alert variant={"success"} show={alertShow} onClick={this.closeAlert} dismissible={alertShow}>
+                {alertMessage}
+            </Alert>
+        );
+    }
+
+    saveBill = (event) => {
+        ReactDom.render(this.displaySpinner(event, true), document.getElementById("spinner"));
+        axios.put("http://localhost:3000/bills/add", {
             billName: this.state.billName,
             billPaymentMode: this.state.paymentMode,
             billAmount: this.state.billAmount,
             cashBack: this.state.cashBack
-        }).then(res =>{
-            alert("Bill ID ::"+res.data.response);
+        }).then(res => {
+            this.setState({"message": res.data.response})
+            var alertMessage = "Bill added with Id " + this.state.message;
+            ReactDom.render(this.displayResponseAsAlert(event, true, alertMessage), document.getElementById("smessage"));
         })
+    }
+
+    closeAlert = (event) => {
+        ReactDom.render(this.displayResponseAsAlert(event, false, null), document.getElementById("smessage"));
     }
 
     render() {
         return <div>
             <BillHomePage/>
+            <div id={"smessage"}></div>
             <div className='col-sm-10'>
                 <Form.Group>
                     <Form.Label>Bill Name</Form.Label>
@@ -57,7 +83,7 @@ class AddBill extends React.Component {
                 <Form.Group>
                     <Form.Label>Payment Mode</Form.Label>
                     <Form.Control as="select" name="paymentMode" onChange={this.fetchValues}>
-                        <option value='#'>Select Payment Mode</option>
+                        <option value='#'>Select Payment Modes</option>
                         <option value='AP'>Amazon Pay</option>
                         <option value='CH'>Cash</option>
                         <option value='CB'>Cash Back</option>
@@ -70,13 +96,15 @@ class AddBill extends React.Component {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Bill Amount</Form.Label>
-                    <Form.Control placeholder="bill amount" name="billAmount" onChange={this.fetchValues} type="number"/>
+                    <Form.Control placeholder="bill amount" name="billAmount" onChange={this.fetchValues}
+                                  type="number"/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Cashback</Form.Label>
                     <Form.Control placeholder="cash back" name="cashBack" onChange={this.fetchValues}/>
                 </Form.Group>
-                <Button type='button' onClick={this.genBillId}>Add Bill</Button>
+                <Button type='button' onClick={this.saveBill}>Add Bill</Button>
+                <div id="spinner"></div>
             </div>
         </div>
     }
