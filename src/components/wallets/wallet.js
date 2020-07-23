@@ -11,7 +11,7 @@ class Wallet extends React.Component {
 
     render() {
         return <div>
-            <Card style={{width: '4rem'}}>
+            <Card style={{width: '6rem'}}>
                 <Card.Img variant="top" src={this.props.image_source}/>
                 <Card.Body>
                     <Card.Text>

@@ -11,7 +11,7 @@ class Menu extends React.Component {
                 <Navbar.Brand href="/">m-portal</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href="bills" >Bills</Nav.Link>
-                    <Nav.Link href="activites">Activites</Nav.Link>
+                    <Nav.Link href="groceries">Groceries</Nav.Link>
                 </Nav>
                 <Button variant="outline-info">Search</Button>
             </Navbar>
