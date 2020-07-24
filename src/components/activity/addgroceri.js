@@ -54,7 +54,7 @@ class AddGroceri extends React.Component {
 
     render() {
         return <div>
-            <GrocessoryHomePage/>
+            <GrocessoryHomePage reLoad={true}/>
             <div id={"smessage"}></div>
             <div className='col-sm-10'>
                 <Form.Group>

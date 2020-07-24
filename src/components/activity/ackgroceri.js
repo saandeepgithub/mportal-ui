@@ -9,7 +9,12 @@ class AckGroceri extends React.Component {
         groceriName: '',
         quantity: '',
         groceriList: '',
-        groceri: []
+        groceri: [],
+        reLoad: ''
+    }
+
+    loadGroceriHomePage=(event) =>{
+        return (<GrocessoryHomePage reLoad={true}/>);
     }
 
     componentDidMount() {
@@ -17,7 +22,8 @@ class AckGroceri extends React.Component {
             var response = res.data.response;
             response.map(groceri => {
                 this.state.groceri.push(<Grocessories groceriId={groceri.groceriId} grocessoryItem={groceri.groceriName}
-                                                      quantity={groceri.quantity} variant="primary" ack={true} displayStatus={true}/>)
+                                                      quantity={groceri.quantity} variant="primary" ack={true}
+                                                      displayStatus={true}/>)
             });
             this.setState({groceriList: this.state.groceri});
         });
@@ -26,7 +32,7 @@ class AckGroceri extends React.Component {
     render() {
         return <div>
             <div>
-                <GrocessoryHomePage/>
+                {this.loadGroceriHomePage()}
                 {this.state.groceriList}
             </div>
         </div>

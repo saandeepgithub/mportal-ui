@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import GrocessoryHomePage from "./grocessoryhomepage";
 import Grocessories from "./grocessories";
-import input from "react-bootstrap/"
 import Form from "react-bootstrap/Form";
 
 class NewGroceries extends React.Component {
@@ -14,8 +13,10 @@ class NewGroceries extends React.Component {
         searchGroceriList: '',
         searchGroceri: [],
         groceri: [],
-        searchStatus: false
+        searchStatus: false,
+        reLoad: true
     }
+
 
     searchGroceri = (event) => {
         var groceri = event.target.value;
@@ -41,13 +42,14 @@ class NewGroceries extends React.Component {
                                                       displayStatus={true}/>)
             });
             this.setState({groceriList: this.state.groceri});
+            this.setState({reLoad: true})
         });
     }
 
     render() {
         return <div>
             <div>
-                <GrocessoryHomePage/>
+                <GrocessoryHomePage reLoad={this.state.reLoad}/>
                 <div className="col-sm-4">
                     <Form.Group>
                         <Form.Control placeholder="search groceri" name="groceriName" onChange={this.searchGroceri}/>

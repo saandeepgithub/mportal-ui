@@ -3,6 +3,7 @@ import Alert from "react-bootstrap/Alert"
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import GrocessoryHomePage from "./grocessoryhomepage";
 
 class Grocessories extends React.Component {
 
@@ -41,6 +42,7 @@ class Grocessories extends React.Component {
             if (ack == 'Y') {
                 this.setState({groceriDisplay: false})
                 this.closeGroceriModel();
+                GrocessoryHomePage.setState({reLoad: true})
             }
         });
     }

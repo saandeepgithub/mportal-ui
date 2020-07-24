@@ -26,7 +26,7 @@ class PurchasedGroceri extends React.Component {
     render() {
         return <div>
             <div>
-                <GrocessoryHomePage/>
+                <GrocessoryHomePage reLoad={true}/>
                 {this.state.groceriList}
             </div>
         </div>
