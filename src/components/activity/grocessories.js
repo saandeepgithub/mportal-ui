@@ -21,7 +21,7 @@ class Grocessories extends React.Component {
         purchase: false,
         ack: false,
         displayModel: false,
-        displayStatus: true,
+        displayStatus: true
     }
 
 
@@ -58,7 +58,8 @@ class Grocessories extends React.Component {
     render() {
         return <div className="col-sm-4">
             <Alert variant={this.state.variant} id={this.props.groceriId}
-                   onClick={this.groceriModel} hidden={!this.state.groceriDisplay}>{this.props.grocessoryItem} {this.props.quantity}</Alert>
+                   onClick={this.groceriModel}
+                   hidden={!this.state.groceriDisplay}>{this.props.grocessoryItem} {this.props.quantity}</Alert>
             <div>
                 <Modal show={this.state.displayModel}>
                     <Modal.Header>

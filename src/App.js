@@ -9,6 +9,7 @@ import AddGroceri from "./components/activity/addgroceri";
 import PurchasedGroceri from "./components/activity/purchasedgroceri";
 import NewGroceries from "./components/activity/newgroceries";
 import AckGroceri from "./components/activity/ackgroceri";
+import SearchGroceri from "./components/activity/searchgroceri";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
             <Route path='/groceries/add' component={AddGroceri} exact={true}/>
             <Route path='/groceries/ack' component={AckGroceri} exact={true}/>
             <Route path='/groceries/purchased' component={PurchasedGroceri} exact={true}/>
+            <Route path='/groceries/search' component={SearchGroceri} exact={true}/>
         </Router>
     );
 }

@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import GrocessoryHomePage from "./grocessoryhomepage";
 import Grocessories from "./grocessories";
+import input from "react-bootstrap/"
+import Form from "react-bootstrap/Form";
 
 class NewGroceries extends React.Component {
 
@@ -9,7 +11,25 @@ class NewGroceries extends React.Component {
         groceriName: '',
         quantity: '',
         groceriList: '',
-        groceri: []
+        searchGroceriList: '',
+        searchGroceri: [],
+        groceri: [],
+        searchStatus: false
+    }
+
+    searchGroceri = (event) => {
+        var groceri = event.target.value;
+        this.setState({searchStatus: true});
+        axios.get("http://localhost:3000/groceri/details/" + groceri).then(res => {
+            var response = res.data.response;
+            response.map(groceri => {
+                this.state.searchGroceri.push(<Grocessories groceriId={groceri.groceriId}
+                                                            grocessoryItem={groceri.groceriName}
+                                                            quantity={groceri.quantity} variant="danger"
+                                                            displayStatus={true}/>)
+            });
+            this.setState({searchGroceriList: this.state.searchGroceri});
+        });
     }
 
     componentDidMount() {
@@ -18,7 +38,7 @@ class NewGroceries extends React.Component {
             response.map(groceri => {
                 this.state.groceri.push(<Grocessories groceriId={groceri.groceriId} grocessoryItem={groceri.groceriName}
                                                       quantity={groceri.quantity} variant="danger"
-                                                      displayStatus={true} />)
+                                                      displayStatus={true}/>)
             });
             this.setState({groceriList: this.state.groceri});
         });
@@ -28,7 +48,17 @@ class NewGroceries extends React.Component {
         return <div>
             <div>
                 <GrocessoryHomePage/>
-                {this.state.groceriList}
+                <div className="col-sm-4">
+                    <Form.Group>
+                        <Form.Control placeholder="search groceri" name="groceriName" onChange={this.searchGroceri}/>
+                    </Form.Group>
+                </div>
+                <div hidden={this.state.searchStatus}>
+                    {this.state.groceriList}
+                </div>
+                <div hidden={!this.state.searchStatus}>
+                    {this.state.searchGroceriList}
+                </div>
             </div>
         </div>
     }

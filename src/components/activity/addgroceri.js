@@ -6,6 +6,9 @@ import axios from "axios";
 import ReactDom from "react-dom";
 import Alert from "react-bootstrap/Alert";
 import Spinner from "react-bootstrap/Spinner";
+import Container from "react-bootstrap/cjs/Container";
+import Row from "react-bootstrap/cjs/Row";
+import Col from "react-bootstrap/cjs/Col";
 
 class AddGroceri extends React.Component {
 
@@ -24,7 +27,7 @@ class AddGroceri extends React.Component {
 
     displaySpinner = (event, hiddenStatus) => {
         return (
-            <Spinner  animation="border" variant="primary" hidden={hiddenStatus}/>
+            <Spinner animation="border" variant="primary" hidden={hiddenStatus}/>
         );
     }
 

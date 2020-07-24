@@ -17,6 +17,7 @@ class GrocessoryHomePage extends React.Component {
                     <Nav.Link href="/groceries">New Grocessories</Nav.Link>
                     <Nav.Link href="/groceries/ack">Ack Grocessories</Nav.Link>
                     <Nav.Link href="/groceries/purchased">Purchased Grocessories</Nav.Link>
+                    <Nav.Link href="/groceries/search">Search Grocessories</Nav.Link>
                 </Nav>
             </Navbar>
         </div>
