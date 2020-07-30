@@ -5,16 +5,14 @@ import AddBill from "./components/bills/addbill";
 import EditBill from './components/bills/editbill'
 import Balance from './components/bills/balance'
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import AddGroceri from "./components/activity/addgroceri";
-import PurchasedGroceri from "./components/activity/purchasedgroceri";
-import NewGroceries from "./components/activity/newgroceries";
-import AckGroceri from "./components/activity/ackgroceri";
-import SearchGroceri from "./components/activity/searchgroceri";
+import AddGroceri from "./components/groceri/addgroceri";
+import PurchasedGroceri from "./components/groceri/purchasedgroceri";
+import NewGroceries from "./components/groceri/newgroceries";
+import AckGroceri from "./components/groceri/ackgroceri";
+import SearchGroceri from "./components/groceri/searchgroceri";
 
 function App() {
     return (
-        <div>
-            <h3>Hello AWS Amplify</h3>
             <Router>
                 <Route path='/' component={Menu} exact={true}/>
                 <Route path='/groceries' component={NewGroceries} exact={true}/>
@@ -27,7 +25,6 @@ function App() {
                 <Route path='/groceries/purchased' component={PurchasedGroceri} exact={true}/>
                 <Route path='/groceries/search' component={SearchGroceri} exact={true}/>
             </Router>
-        </div>
     );
 }
 

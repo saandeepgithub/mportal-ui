@@ -12,6 +12,8 @@ class Menu extends React.Component {
                 <Nav className="mr-auto">
                     <Nav.Link href="bills" >Bills</Nav.Link>
                     <Nav.Link href="groceries">Groceries</Nav.Link>
+                    <Nav.Link href="health">Health</Nav.Link>
+                    <Nav.Link href="wallets">Wallets</Nav.Link>
                 </Nav>
                 <Button variant="outline-info">Search</Button>
             </Navbar>
