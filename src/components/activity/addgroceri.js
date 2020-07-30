@@ -6,9 +6,7 @@ import axios from "axios";
 import ReactDom from "react-dom";
 import Alert from "react-bootstrap/Alert";
 import Spinner from "react-bootstrap/Spinner";
-import Container from "react-bootstrap/cjs/Container";
-import Row from "react-bootstrap/cjs/Row";
-import Col from "react-bootstrap/cjs/Col";
+import {PORTAL_URL} from "../consts";
 
 class AddGroceri extends React.Component {
 
@@ -33,7 +31,7 @@ class AddGroceri extends React.Component {
 
     addGroceri = (event) => {
         ReactDom.render(this.displaySpinner(event, true), document.getElementById("spinner"));
-        axios.post("http://localhost:3000/groceri/add", {
+        axios.post(PORTAL_URL+"/groceri/add", {
             groceriName: this.state.groceriName,
             quantity: this.state.quantity,
         }).then(res => {

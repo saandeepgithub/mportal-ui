@@ -3,6 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import axios from "axios";
 import Badge from "react-bootstrap/Badge";
+import {PORTAL_URL} from "../consts";
 
 class GrocessoryHomePage extends React.Component {
 
@@ -19,17 +20,17 @@ class GrocessoryHomePage extends React.Component {
     }
 
     getNotificationCount = (event) => {
-        axios.get("http://localhost:3000/groceri/new/count").then(res => {
+        axios.get(PORTAL_URL+"/groceri/new/count").then(res => {
             var newCount = res.data.response;
             this.setState({newCount: newCount});
         });
 
-        axios.get("http://localhost:3000/groceri/ack/count").then(res => {
+        axios.get(PORTAL_URL+"/groceri/ack/count").then(res => {
             var ackCount = res.data.response;
             this.setState({ackCount: ackCount});
         });
 
-        axios.get("http://localhost:3000/groceri/purchase/count").then(res => {
+        axios.get(PORTAL_URL+"/groceri/purchase/count").then(res => {
             var purchaseCount = res.data.response;
             this.setState({purchaseCount: purchaseCount});
         });

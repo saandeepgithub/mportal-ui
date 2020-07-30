@@ -3,6 +3,7 @@ import axios from "axios";
 import GrocessoryHomePage from "./grocessoryhomepage";
 import Grocessories from "./grocessories";
 import Form from "react-bootstrap/Form";
+import {PORTAL_URL} from "../consts";
 
 class NewGroceries extends React.Component {
 
@@ -21,7 +22,7 @@ class NewGroceries extends React.Component {
     searchGroceri = (event) => {
         var groceri = event.target.value;
         this.setState({searchStatus: true});
-        axios.get("http://localhost:3000/groceri/details/" + groceri).then(res => {
+        axios.get(PORTAL_URL+"/groceri/details/" + groceri).then(res => {
             var response = res.data.response;
             response.map(groceri => {
                 this.state.searchGroceri.push(<Grocessories groceriId={groceri.groceriId}
@@ -34,7 +35,7 @@ class NewGroceries extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:3000/groceri/display/new").then(res => {
+        axios.get(PORTAL_URL+"/groceri/display/new").then(res => {
             var response = res.data.response;
             response.map(groceri => {
                 this.state.groceri.push(<Grocessories groceriId={groceri.groceriId} grocessoryItem={groceri.groceriName}

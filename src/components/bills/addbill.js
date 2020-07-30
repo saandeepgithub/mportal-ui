@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
+import {PORTAL_URL} from "../consts";
 
 class AddBill extends React.Component {
 
@@ -38,7 +39,7 @@ class AddBill extends React.Component {
 
     saveBill = (event) => {
         ReactDom.render(this.displaySpinner(event, true), document.getElementById("spinner"));
-        axios.put("http://localhost:3000/bills/add", {
+        axios.put(PORTAL_URL+"/bills/add", {
             billName: this.state.billName,
             billPaymentMode: this.state.paymentMode,
             billAmount: this.state.billAmount,

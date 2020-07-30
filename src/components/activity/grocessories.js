@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import GrocessoryHomePage from "./grocessoryhomepage";
+import {PORTAL_URL} from "../consts";
 
 class Grocessories extends React.Component {
 
@@ -37,7 +38,7 @@ class Grocessories extends React.Component {
     }
 
     ackGroceri = (event) => {
-        axios.put("http://localhost:3000/groceri/ack/" + this.props.groceriId).then(res => {
+        axios.put(PORTAL_URL+"/groceri/ack/" + this.props.groceriId).then(res => {
             var ack = res.data.response;
             if (ack == 'Y') {
                 this.setState({groceriDisplay: false})
@@ -48,7 +49,7 @@ class Grocessories extends React.Component {
     }
 
     purchaseGroceri = (event) => {
-        axios.put("http://localhost:3000/groceri/purchase/" + this.props.groceriId).then(res => {
+        axios.put(PORTAL_URL+"/groceri/purchase/" + this.props.groceriId).then(res => {
             var ack = res.data.response;
             if (ack == 'Y') {
                 this.closeGroceriModel();
