@@ -13,18 +13,21 @@ import SearchGroceri from "./components/activity/searchgroceri";
 
 function App() {
     return (
-        <Router>
-            <Route path='/' component={Menu} exact={true}/>
-            <Route path='/groceries' component={NewGroceries} exact={true}/>
-            <Route path='/bills' component={AddBill} exact={true}/>
-            <Route path='/bills/add' component={AddBill} exact={true}/>
-            <Route path='/bills/view' component={EditBill} exact={true}/>
-            <Route path='/bills/balance' component={Balance} exact={true}/>
-            <Route path='/groceries/add' component={AddGroceri} exact={true}/>
-            <Route path='/groceries/ack' component={AckGroceri} exact={true}/>
-            <Route path='/groceries/purchased' component={PurchasedGroceri} exact={true}/>
-            <Route path='/groceries/search' component={SearchGroceri} exact={true}/>
-        </Router>
+        <div>
+            <h3>Hello AWS Amplify</h3>
+            <Router>
+                <Route path='/' component={Menu} exact={true}/>
+                <Route path='/groceries' component={NewGroceries} exact={true}/>
+                <Route path='/bills' component={AddBill} exact={true}/>
+                <Route path='/bills/add' component={AddBill} exact={true}/>
+                <Route path='/bills/view' component={EditBill} exact={true}/>
+                <Route path='/bills/balance' component={Balance} exact={true}/>
+                <Route path='/groceries/add' component={AddGroceri} exact={true}/>
+                <Route path='/groceries/ack' component={AckGroceri} exact={true}/>
+                <Route path='/groceries/purchased' component={PurchasedGroceri} exact={true}/>
+                <Route path='/groceries/search' component={SearchGroceri} exact={true}/>
+            </Router>
+        </div>
     );
 }
 
