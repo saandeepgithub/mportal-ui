@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Menu from "./components/Menu";
+import Menu from "./components/groceri/Menu";
 import AddBill from "./components/bills/addbill";
-import EditBill from './components/bills/editbill'
+import EditBill from './components/bills/vieweditbill'
 import Balance from './components/bills/balance'
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import AddGroceri from "./components/groceri/addgroceri";

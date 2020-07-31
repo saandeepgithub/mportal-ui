@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Menu from "../Menu";
+import Menu from "./Menu";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
