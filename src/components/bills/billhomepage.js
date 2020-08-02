@@ -11,11 +11,10 @@ class BillHomePage extends React.Component {
     render() {
         return <div>
             <Navbar bg="dark" variant="dark" fixed={this.props.fixed}>
-                <Navbar.Brand href="/groceries">Groceries</Navbar.Brand>
+                <Navbar.Brand href="/">Menu</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href="/bills/add">Add Bill</Nav.Link>
                     <Nav.Link href="/bills/view">View Bill</Nav.Link>
-                    <Nav.Link href="/bills/balance">Balance</Nav.Link>
                 </Nav>
             </Navbar>
         </div>

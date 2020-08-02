@@ -15,7 +15,8 @@ class AddBill extends React.Component {
         paymentMode: '',
         billAmount: 0,
         cashBack: 0,
-        message: ''
+        message: '',
+        billDate:''
     }
 
     fetchValues = (event) => {
@@ -25,7 +26,7 @@ class AddBill extends React.Component {
 
     displaySpinner = (event, hiddenStatus) => {
         return (
-            <Spinner  animation="border" variant="primary" hidden={hiddenStatus}/>
+            <Spinner animation="border" variant="primary" hidden={hiddenStatus}/>
         );
     }
 
@@ -39,11 +40,12 @@ class AddBill extends React.Component {
 
     saveBill = (event) => {
         ReactDom.render(this.displaySpinner(event, true), document.getElementById("spinner"));
-        axios.put(PORTAL_URL+"/bills/add", {
+        axios.put(PORTAL_URL + "/bills/add", {
             billName: this.state.billName,
             billPaymentMode: this.state.paymentMode,
             billAmount: this.state.billAmount,
-            cashBack: this.state.cashBack
+            cashBack: this.state.cashBack,
+            billDate: this.state.billDate
         }).then(res => {
             this.setState({"message": res.data.response})
             var alertMessage = "Bill added with Id " + this.state.message;
@@ -61,9 +63,9 @@ class AddBill extends React.Component {
             <div id={"smessage"}></div>
             <div className='col-sm-10'>
                 <Form.Group>
-                    <Form.Label>Bill Name</Form.Label>
+                    <Form.Label>BILL NAME</Form.Label>
                     <Form.Control as="select" onChange={this.fetchValues} name="billName">
-                        <option value='#'>Select Bill</option>
+                        <option value='#'>SELECT BILL</option>
                         <option value='ACT'>ACT_FIBER</option>
                         <option value='AMZ'>AMAZON</option>
                         <option value='DTH'>DTH</option>
@@ -82,9 +84,9 @@ class AddBill extends React.Component {
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Payment Mode</Form.Label>
+                    <Form.Label>PAYMENT MODE</Form.Label>
                     <Form.Control as="select" name="paymentMode" onChange={this.fetchValues}>
-                        <option value='#'>Select Payment Modes</option>
+                        <option value='#'>SELECT PAYMENT MODE</option>
                         <option value='AP'>Amazon Pay</option>
                         <option value='CH'>Cash</option>
                         <option value='CB'>Cash Back</option>
@@ -96,13 +98,17 @@ class AddBill extends React.Component {
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Bill Amount</Form.Label>
-                    <Form.Control placeholder="bill amount" name="billAmount" onChange={this.fetchValues}
+                    <Form.Label>BILL AMOUNT</Form.Label>
+                    <Form.Control placeholder="BILL AMOUNT" name="billAmount" onChange={this.fetchValues}
                                   type="number"/>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Cashback</Form.Label>
-                    <Form.Control placeholder="cash back" name="cashBack" onChange={this.fetchValues}/>
+                    <Form.Label>CASHBACK</Form.Label>
+                    <Form.Control placeholder="CASHBACK" name="cashBack" onChange={this.fetchValues}/>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>BILL DATE</Form.Label>
+                    <Form.Control placeholder="BILL DATE" name="billDate" onChange={this.fetchValues} type="date"/>
                 </Form.Group>
                 <Button type='button' onClick={this.saveBill}>Add Bill</Button>
                 <div id="spinner"></div>

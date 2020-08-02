@@ -1,5 +1,4 @@
 import React from "react";
-import BillHomePage from "./billhomepage";
 import Wallet from "../wallets/wallet";
 import axios from "axios";
 import AP from "../../images/AP.png";
@@ -8,6 +7,7 @@ import GP from "../../images/GP.png";
 import PP from "../../images/PP.png";
 import PT from "../../images/PT.png";
 import {PORTAL_URL} from "../consts";
+import Menu from "../groceri/Menu";
 
 class Balance extends React.Component {
 
@@ -20,19 +20,19 @@ class Balance extends React.Component {
         axios.get(PORTAL_URL + "/wallet/all").then(res => {
             var wallet = res.data.response;
             Object.keys(wallet).map((key) => {
-                if(key=="AP"){
+                if (key == "AP") {
                     this.state.wallet.push(<Wallet balance={wallet[key]} image_source={AP}/>)
                 }
-                if(key=="CH"){
+                if (key == "CH") {
                     this.state.wallet.push(<Wallet balance={wallet[key]} image_source={CH}/>)
                 }
-                if(key=="GP"){
+                if (key == "GP") {
                     this.state.wallet.push(<Wallet balance={wallet[key]} image_source={GP}/>)
                 }
-                if(key=="PP"){
+                if (key == "PP") {
                     this.state.wallet.push(<Wallet balance={wallet[key]} image_source={PP}/>)
                 }
-                if(key=="PT"){
+                if (key == "PT") {
                     this.state.wallet.push(<Wallet balance={wallet[key]} image_source={PT}/>)
                 }
             })
@@ -42,8 +42,8 @@ class Balance extends React.Component {
 
     render() {
         return <div>
+            <Menu/>
             <div>
-                <BillHomePage fixed="top"/>
                 {this.state.walletInfo}
             </div>
         </div>
