@@ -44,7 +44,7 @@ class GrocessoryHomePage extends React.Component {
         if (this.state.reLoad) {
             return <div>
                 <Navbar bg="dark" variant="dark" fixed={this.props.fixed}>
-                    <Navbar.Brand href="/bills">Bills</Navbar.Brand>
+                    <Navbar.Brand href="/">Menu</Navbar.Brand>
                     <Nav className="mr-auto">
                         <Nav.Link href="/groceries/add">Add Grocessories</Nav.Link>
                         <Nav.Link href="/groceries">New Grocessories <Badge

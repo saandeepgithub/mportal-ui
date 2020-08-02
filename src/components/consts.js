@@ -1,1 +1,1 @@
-export const PORTAL_URL="https://mportal.cfapps.io";
+export const PORTAL_URL="http://localhost:9000";
