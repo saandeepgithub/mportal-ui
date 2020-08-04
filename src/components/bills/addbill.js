@@ -17,7 +17,7 @@ class AddBill extends React.Component {
         cashBack: 0,
         message: '',
         billDate: '',
-        spinnerDisplay: false
+        spinnerDisplay: true
     }
 
     fetchValues = (event) => {
@@ -41,7 +41,7 @@ class AddBill extends React.Component {
 
     saveBill = (event) => {
         ReactDom.render(this.displaySpinner(event, true), document.getElementById("spinner"));
-        this.setState({"spinnerDisplay": true});
+        this.setState({"spinnerDisplay": false});
         axios.put(PORTAL_URL + "/bills/add", {
             billName: this.state.billName,
             billPaymentMode: this.state.paymentMode,
@@ -51,10 +51,10 @@ class AddBill extends React.Component {
         }).then(res => {
             this.setState({"message": res.data.response})
             var alertMessage = "Bill added with Id " + this.state.message;
-            this.setState({"spinnerDisplay": false});
+            this.setState({"spinnerDisplay": true});
             ReactDom.render(this.displayResponseAsAlert(event, true, alertMessage), document.getElementById("smessage"));
         })
-        this.setState({"spinnerDisplay": false});
+        this.setState({"spinnerDisplay": true});
     }
 
     closeAlert = (event) => {
@@ -116,6 +116,7 @@ class AddBill extends React.Component {
                     <Form.Control placeholder="BILL DATE" name="billDate" onChange={this.fetchValues} type="date"/>
                 </Form.Group>
                 <Button type='button' onClick={this.saveBill}>Add Bill</Button>
+                <Button type='reset'>reset</Button>
                 <div id="spinner" hidden={this.state.spinnerDisplay}>
                     <Spinner animation="border" variant="secondary"/>
                 </div>
