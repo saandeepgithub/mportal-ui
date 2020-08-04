@@ -117,7 +117,7 @@ class AddBill extends React.Component {
                 </Form.Group>
                 <Button type='button' onClick={this.saveBill}>Add Bill</Button>
                 <div id="spinner" hidden={this.state.spinnerDisplay}>
-                    <Spinner animation="border" variant="secondary" dis/>
+                    <Spinner animation="border" variant="secondary"/>
                 </div>
             </div>
         </div>
