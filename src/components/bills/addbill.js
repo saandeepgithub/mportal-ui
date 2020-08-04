@@ -116,9 +116,8 @@ class AddBill extends React.Component {
                     <Form.Control placeholder="BILL DATE" name="billDate" onChange={this.fetchValues} type="date"/>
                 </Form.Group>
                 <Button type='button' onClick={this.saveBill}>Add Bill</Button>
-                <Button type='reset'>reset</Button>
                 <div id="spinner" hidden={this.state.spinnerDisplay}>
-                    <Spinner animation="border" variant="secondary"/>
+                    <Spinner animation="border" variant="success"/>
                 </div>
             </div>
         </div>
