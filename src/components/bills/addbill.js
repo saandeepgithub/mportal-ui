@@ -25,12 +25,6 @@ class AddBill extends React.Component {
         this.setState({[billAttr]: event.target.value});
     }
 
-    displaySpinner = (event, hiddenStatus) => {
-        return (
-            <Spinner animation="border" variant="primary" hidden={hiddenStatus}/>
-        );
-    }
-
     displayResponseAsAlert = (event, alertShow, alertMessage) => {
         return (
             <Alert variant={"success"} show={alertShow} onClick={this.closeAlert} dismissible={alertShow}>
@@ -40,7 +34,6 @@ class AddBill extends React.Component {
     }
 
     saveBill = (event) => {
-        ReactDom.render(this.displaySpinner(event, true), document.getElementById("spinner"));
         this.setState({"spinnerDisplay": false});
         axios.put(PORTAL_URL + "/bills/add", {
             billName: this.state.billName,
@@ -116,7 +109,7 @@ class AddBill extends React.Component {
                     <Form.Control placeholder="BILL DATE" name="billDate" onChange={this.fetchValues} type="date"/>
                 </Form.Group>
                 <Button type='button' onClick={this.saveBill}>Add Bill</Button>
-                <div id="spinner" hidden={this.state.spinnerDisplay}>
+                <div hidden={this.state.spinnerDisplay}>
                     <Spinner animation="border" variant="success"/>
                 </div>
             </div>
