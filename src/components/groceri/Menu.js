@@ -12,6 +12,7 @@ class Menu extends React.Component {
                     <Nav.Link href="groceries">Groceries</Nav.Link>
                     <Nav.Link href="health">Health</Nav.Link>
                     <Nav.Link href="wallets">Wallets</Nav.Link>
+                    <Nav.Link href="covid">Covid</Nav.Link>
                 </Nav>
             </Navbar>
         </div>
