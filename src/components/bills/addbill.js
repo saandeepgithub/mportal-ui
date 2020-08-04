@@ -71,6 +71,7 @@ class AddBill extends React.Component {
                         <option value='DTH'>DTH</option>
                         <option value='GRO'>GROCESSORIES</option>
                         <option value='MED'>MEDICINES</option>
+                        <option value='MLK'>MILK</option>
                         <option value='MR'>MOBILE_RECHARGE</option>
                         <option value='NV'>NON-VEG</option>
                         <option value='PTL'>PETROL</option>
