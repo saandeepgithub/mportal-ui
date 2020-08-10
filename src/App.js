@@ -12,6 +12,8 @@ import AckGroceri from "./components/groceri/ackgroceri";
 import SearchGroceri from "./components/groceri/searchgroceri";
 import Health from "./components/health/health";
 import Covid from "./components/covid/Covid";
+import Expenditure from "./components/expenditure/Expenditure";
+import Allbills from "./components/bills/allbills";
 
 function App() {
     return (
@@ -21,6 +23,7 @@ function App() {
             <Route path='/bills' component={AddBill} exact={true}/>
             <Route path='/bills/add' component={AddBill} exact={true}/>
             <Route path='/bills/view' component={EditBill} exact={true}/>
+            <Route path='/bills/all' component={Allbills} exact={true}/>
             <Route path='/wallets' component={Balance} exact={true}/>
             <Route path='/groceries/add' component={AddGroceri} exact={true}/>
             <Route path='/groceries/ack' component={AckGroceri} exact={true}/>
@@ -28,6 +31,7 @@ function App() {
             <Route path='/groceries/search' component={SearchGroceri} exact={true}/>
             <Route path='/health' component={Health} exact={true}/>
             <Route path='/covid' component={Covid} exact={true}/>
+            <Route path='/expenditure' component={Expenditure} exact={true}/>
         </Router>
     );
 }
